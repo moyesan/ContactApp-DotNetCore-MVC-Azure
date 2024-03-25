@@ -38,7 +38,10 @@ namespace contact_app_mvc.Controllers
         private IEnumerable<Contact> GetContacts()
         {
             var Contacts = new List<Contact>();
-            using (var connection = new SqlConnection(_configuration.GetConnectionString("ContactDatabase")))
+
+            var conn = _configuration["SQLCONNSTR_CONTACT_DB"];
+
+            using (var connection = new SqlConnection(conn))
             {
                 var sql = "SELECT * FROM tblContact";
                 connection.Open();
