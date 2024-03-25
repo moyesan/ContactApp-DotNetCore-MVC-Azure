@@ -39,7 +39,7 @@ namespace contact_app_mvc.Controllers
         {
             var Contacts = new List<Contact>();
 
-            var conn = _configuration["ContactDBConnectionString"];
+            var conn = Environment.GetEnvironmentVariable("SQLCONNSTR_CONTACT_DB");
 
             using (var connection = new SqlConnection(conn))
             {
